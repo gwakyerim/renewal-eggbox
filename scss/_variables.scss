@@ -1,0 +1,51 @@
+/* Font Family */
+$primary-kr: 'NEXON Lv2 Gothic';
+$primary-en: 'Roboto';
+
+/* Font Size */
+// 데스크탑
+$title-lg: 44px;
+$title-md: 36px;
+$title-sm: 24px;
+$text-lg: 18px;
+$text-md: 16px;
+$text-sm: 14px;
+
+//태블릿, 모바일
+$title-lg-m: 30px;
+$title-md-m: 26px;
+$title-sm-m: 20px;
+
+/* Font Weight */
+$semibold: 600;
+$regular: 400;
+
+/* Font line-height */
+$line-height-title: 120%;
+$line-height-body: 140%;
+
+/* Color */
+$black: #282828;
+$gray: #BEBBB5;
+$yellow: #FDCF0B;
+$orange: #F5A706;
+$white: #ffffff;
+
+/* Padding */
+$content-p: 120px 0;
+$container-p: 0 24px;
+$li-p: 8px 16px;
+$btn-go-p: 8px 16px;
+
+/* MediaQuery */
+// 모바일
+$breakpoint-mobile: 375px;
+
+// 모바일에서 태블릿
+$breakpoint-tabletToMobile: 767px;
+
+// 태블릿
+$breakpoint-tablet: 768px;
+
+// 태블릿에서 데스크탑
+$breakpoint-desktopToTablet: 1023px;
