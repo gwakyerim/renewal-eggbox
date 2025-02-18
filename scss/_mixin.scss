@@ -39,16 +39,21 @@
 }
 
 /* 미디어쿼리 분기점 */
-//모바일 : 최소 '모바일'사이즈부터 ~ 최대 '모바일에서 태블릿'사이즈까지
+//Break Point
+$max-mobile: 767px;
+$max-tablet: 1023px;
+
+// 모바일 : 최대 767px 까지
 @mixin mobile {
-  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tabletToMobile - 1px}) {
+  @media (max-width: #{$mobile}) {
     @content;
   }
 }
 
-// 태블릿 : 최소'태블릿'사이즈부터 ~ 최대 '태블릿에서 데스크탑'사이즈까지
+// 태블릿 : 최대 1023px 까지
 @mixin tablet {
-  @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktopToTablet - 1px}) {
+  @media (max-width: #{$max-tablet}) {
     @content;
   }
 }
+

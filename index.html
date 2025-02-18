@@ -12,6 +12,8 @@
   <!-- Swiper CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <!-- JQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
   <!-- 헤더 영역 시작 -->
@@ -104,9 +106,103 @@
           </li>
         </ul>
       </div>
+      <!-- drawer -->
+      <div class="mobile-open-btn" title="메뉴">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
   <!-- 헤더 영역 끝 -->
+
+  <!-- 모바일 메뉴 -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-inner">
+      <div>
+         <!-- logo -->
+        <div class="logo">
+          <a href="#">
+            <img src="./img/logo-01.png" alt="에그박스 로고">
+          </a>
+        </div>
+        <!-- drawer -->
+        <div class="mobile-close-btn" title="메뉴 닫기">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <!-- 메뉴 리스트 영역 -->
+      <ul class="mobile-menu-list">
+        <li class="dropdown-toggle">
+          <a href="#none">브랜드</a>
+          <ul class="mobile-menu-sub">
+            <li>
+              <a href="#none">회사소개</a>
+            </li>
+            <li>
+              <a href="#none">브랜드 스토리</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown-toggle">
+          <a href="#none">메뉴</a>
+          <ul class="mobile-menu-sub">
+            <li>
+              <a href="#none">에그박스</a>
+            </li>
+            <li>
+              <a href="#none">버거박스</a>
+            </li>
+            <li>
+              <a href="#none">사이드</a>
+            </li>
+            <li>
+              <a href="#none">음료</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown-toggle">
+          <a href="#none">매장</a>
+          <ul class="mobile-menu-sub">
+            <li>
+              <a href="#none">매장찾기</a>
+            </li>
+            <li>
+              <a href="#none">인테리어</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown-toggle">
+          <a href="#none">소식</a>
+          <ul class="mobile-menu-sub">
+            <li>
+              <a href="#none">공지사항</a>
+            </li>
+            <li>
+              <a href="#none">뉴스</a>
+            </li>
+            <li>
+              <a href="#none">이벤트</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown-toggle">
+          <a href="#none">가맹문의</a>
+          <ul class="mobile-menu-sub">
+            <li>
+              <a href="#none">상담하기</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
 
   <!-- 메인 영역 -->
   <main>

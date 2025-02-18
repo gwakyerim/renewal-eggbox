@@ -63,3 +63,30 @@ window.addEventListener("scroll", () => {
         noticeScrollEvent.classList.add('active');
     }
 });
+
+
+/* 모바일 헤더 메뉴 slide toggle 만들기 */
+$(document).ready(function() {
+  $('.dropdown-toggle > a').click(function() {
+    const content = $(this).next('.mobile-menu-sub');
+    $('.mobile-menu-sub').not(content).slideUp(); //클릭 제외 다른 슬라이더들은 닫기
+    content.slideToggle(); //클릭한 섹션은 열기
+  })
+
+  $('.dropdown-toggle > a').click(function() {
+    $(this).parent().siblings().children('.dropdown-toggle > a').removeClass('active');
+    $(this).toggleClass('active');
+  })
+})
+
+/* 모바일 drawer */
+const mobileOpen = document.querySelector('.mobile-open-btn');
+const mobileClose = document.querySelector('.mobile-close-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+mobileOpen.addEventListener('click', function() {
+  mobileMenu.classList.add('active');
+});
+mobileClose.addEventListener('click', function() {
+  mobileMenu.classList.remove('active');
+})

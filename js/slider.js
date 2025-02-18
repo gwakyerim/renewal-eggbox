@@ -38,11 +38,11 @@ const menuSlider = new Swiper('.menu-slider .swiper', {
         spaceBetween : 16, //아이템 사이 간격
       },
       768 : {
-        slidesPerView : '3',
+        slidesPerView : '2',
         spaceBetween : 24, //아이템 사이 간격
       },
       1024 : {
-        slidesPerView : '4',
+        slidesPerView : '3',
         spaceBetween : 24, //아이템 사이 간격
       },
   },

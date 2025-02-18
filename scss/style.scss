@@ -19,7 +19,7 @@ body {
   position: relative;
   box-sizing: border-box;
   font-family: $primary-kr;
-  font-size: $title-md;
+  font-size: $text-md;
   font-weight: $regular;
   line-height: $line-height-body;
   color: $black;
@@ -178,12 +178,17 @@ li,button {
         }
       }
     }
+    .mobile-open-btn {
+      display: none;
+    }
   }
+}
+.mobile-menu {
+  display: none;
 }
 
 
 /* #### 메인 영역 #### */
-
 /* #### section : visual #### */
 #visual {
   position: relative;
@@ -199,9 +204,10 @@ li,button {
         img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: fill;
         }
         p {
+          width: 100%;
           text-align: center;
           font-size: $title-lg;
           color: $white;
@@ -212,7 +218,6 @@ li,button {
             font-weight: $regular;
             font-family: $primary-en;
             font-size: $title-sm;
-            @include ellipsis;
           }
         }
       }
@@ -321,7 +326,7 @@ li,button {
     }
     /* 메뉴 리스트 아이템 */
     .menu-slider {
-      width: 100%;
+      width: calc(100% - 128px);
       display: none;
       position: relative;
       &.active {
@@ -383,9 +388,9 @@ li,button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 44px;
-        height: 44px;
-        right: -68px;
+        width: 40px;
+        height: 40px;
+        right: -64px;
         background-image: url('../img/swiper-right.png');
         background-position: center;
         background-repeat: no-repeat;
@@ -396,9 +401,9 @@ li,button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 44px;
-        height: 44px;
-        left: -68px;
+        width: 40px;
+        height: 40px;
+        left: -64px;
         background-image: url('../img/swiper-left.png');
         background-position: center;
         background-repeat: no-repeat;
@@ -627,6 +632,232 @@ li,button {
   }
 }
 
+/* #### 미디어쿼리 분기점 #### */
+
+@include tablet {
+  /* #### 공통영역 #### */
+  .title {
+    font-size: $title-md-m;
+  }
+
+  /* #### 헤더 영역 #### */
+  #header {
+    position: relative;
+    .container {
+      height: 100%;
+      /* 헤더 nav 영역 */
+      nav .nav-list {
+        display: none;
+      }
+      .language-inner {
+        display: none;
+      }
+      .mobile-open-btn {
+        display: block;
+        position: relative;
+        width: 24px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        span {
+          width: 100%;
+          height: 2px;
+          background-color: $black;
+          position: absolute;
+          top: 0;
+          left: 0;
+          &:nth-child(2) {
+            top: 50%;
+            left: 0;
+          }
+          &:nth-child(3) {
+            top: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: $white;
+    top: -100%;
+    transition: 0.5s;
+    &.active {
+      top: 0;
+    }
+    .mobile-menu-inner {
+      padding: $container-p;
+      /* 모바일 메뉴 상단 영역 */
+      div {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        .logo {
+          margin: 0 auto;
+        }
+        .mobile-close-btn {
+          position: relative;
+          width: 24px;
+          height: 20px;
+          cursor: pointer;
+          span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: $black;
+            &:nth-child(1) {
+              top: 50%;
+              left: 0;
+              transform: rotate(45deg);
+            }
+            &:nth-child(2) {
+              top: 50%;
+              left: 0;
+              transform: rotate(-45deg);
+            }
+          }
+        }
+      }
+      /* 모바일 메뉴 리스트 영역 */
+      .mobile-menu-list {
+        .dropdown-toggle {
+          border-bottom: 1px solid $gray;
+          & > a {
+            width: 100%;
+            padding: 24px 0;
+            display: block;
+            position: relative;
+            font-weight: $semibold;
+            &:after {
+              content: '';
+              position: absolute;
+              width: 24px;
+              height: 24px;
+              background-image: url(../img/arrow-row.png);
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: 100%;
+              right: 0;
+              transition: 0.3s;
+            }
+            &.active:after {
+              transform: rotate(180deg);
+            }
+          }
+          .mobile-menu-sub {
+            display: none;
+            li a {
+              padding: 16px 0;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* #### 메인 영역 #### */
+  /* #### section : visual #### */
+  #visual {
+    .visual-slider .swiper-wrapper .swiper-slide {
+      p {
+        width: 100%;
+        text-align: center;
+        font-size: $title-lg-m;
+        span {
+          font-size: $title-sm-m;
+        }
+      }
+    }
+  }
+
+  /* #### section : brand #### */
+  #brand {
+    /* 브랜드 타이틀 세부설명 */
+    .container .brand-title {
+      div {
+        font-size: $title-sm-m;
+      }
+    }
+  }
+  
+  /* #### section : store #### */
+  #store {
+    .container {
+      padding: $content-p;
+      flex-direction: column;
+      .store-scroll {
+        transform: translateX(-100px);
+        opacity: 0;
+        transition: 1s;
+        &.active {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .store-inner {
+        margin-top: 48px;
+        width: 100%;
+        gap: 24px;
+        display: flex;
+        /* 검색 버튼 */
+        .search {
+          width: 50%;
+          @include flexCenter(center);
+          form {
+            position: relative;
+            input[type=search] {
+              width: 326px;
+              height: 44px;
+              padding: 0 100px 0 40px;
+              border: none;
+              border-bottom: 1px solid $black;
+              background-image: url('../img/icon-map.png');
+              background-position: left 8px center;
+              background-repeat: no-repeat;
+              background-size: 24px 24px;
+              -webkit-appearance: textfield; /* 기본(네이티브) 모양을 제거 */
+              &::-webkit-search-cancel-button,
+              &::-webkit-search-results-button {
+                display: none; /* x 버튼 숨기기 */
+              }
+              &:focus {
+                outline: none;
+              }
+            }
+            .btn-search {
+              position: absolute;
+              bottom: 8px;
+              right: 8px;
+              border: 1px solid $black;
+              border-radius: 20px;
+              padding: 4px 8px;
+              background-color: transparent;
+              font-size: $text-sm;
+              cursor: pointer;
+            }
+          }
+        }
+        /* 구글 맵 */
+        .google-map {
+          width: 50%;
+          iframe {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+}
 
 
 /* #### 키프레임 에니메이션 #### */
