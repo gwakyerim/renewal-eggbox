@@ -45,7 +45,7 @@ $max-tablet: 1023px;
 
 // 모바일 : 최대 767px 까지
 @mixin mobile {
-  @media (max-width: #{$mobile}) {
+  @media (max-width: #{$max-mobile}) {
     @content;
   }
 }

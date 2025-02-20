@@ -23,9 +23,10 @@ body {
   font-weight: $regular;
   line-height: $line-height-body;
   color: $black;
+  overflow-x: hidden;
 }
 .container {
-  padding: $container-p;
+  padding: 0 $container-p;
   max-width: 1080px;
   margin: 0 auto;
   @include flexCenter(center);
@@ -44,7 +45,6 @@ li,button {
 .logo {
   height: 100%;
   width: 152px;
-  height: 62px;
   a img {
     width: 100%;
     height: 100%;
@@ -87,6 +87,11 @@ li,button {
 #header {
   width: 100%;
   height: 78px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: $white;
   .container {
     @include flexCenter(space-between);
     /* 헤더 nav 영역 */
@@ -195,7 +200,7 @@ li,button {
   .visual-slider {
     .swiper-wrapper {
       width: 100%;
-      height: calc(100vh - 78px);
+      height: 100vh;
       transition-timing-function: linear;
       .swiper-slide {
         position: relative;
@@ -204,21 +209,7 @@ li,button {
         img {
           width: 100%;
           height: 100%;
-          object-fit: fill;
-        }
-        p {
-          width: 100%;
-          text-align: center;
-          font-size: $title-lg;
-          color: $white;
-          line-height: $line-height-title;
-          font-weight: $semibold;
-          @include positionCenter;
-          span {
-            font-weight: $regular;
-            font-family: $primary-en;
-            font-size: $title-sm;
-          }
+          object-fit: cover;
         }
       }
     }
@@ -238,7 +229,7 @@ li,button {
 /* #### section : brand #### */
 #brand {
   .container {
-    padding: $content-p;
+    padding: $content-p $container-p;
     flex-direction: column;
     text-align: center;
     /* 서브 로고 이미지 */
@@ -307,7 +298,7 @@ li,button {
   background-repeat: no-repeat;
   background-size: cover;
   .container {
-    padding: $content-p;
+    padding: $content-p $container-p;
     flex-direction: column;
     gap: 48px;
     /* 메뉴 리스트 */
@@ -327,6 +318,7 @@ li,button {
     /* 메뉴 리스트 아이템 */
     .menu-slider {
       width: calc(100% - 128px);
+      height: auto;
       display: none;
       position: relative;
       &.active {
@@ -337,7 +329,7 @@ li,button {
         padding-top: 10px;
         /* 카드 아이템 */
         .card-item a {
-          height: 340px;
+          padding: $li-p;
           display: inline-block;
           border: 1px solid $gray;
           border-radius: 10px;
@@ -352,26 +344,23 @@ li,button {
             transform: translateY(-10px);
           }
           .item-img {
-            width: 100%;
-            height: 199px;
             border-bottom: 1px solid $gray;
             img {
               width: 100%;
-              height: 100%;
-              object-fit: contain;
+              aspect-ratio: 1 / 1;
             }
           }
           .item-desc {
-            padding: 16px;
+            padding: 16px 0;
             height: 100%;
             span {
               display: block;
               margin-bottom: 8px;
               font-family: $primary-en;
               font-size: $text-sm;
+              @include ellipsisMulti(1);
             }
             b {
-              font-size: $text-lg;
               font-weight: 500;
             }
             p {
@@ -417,7 +406,7 @@ li,button {
 /* #### section : store #### */
 #store {
   .container {
-    padding: $content-p;
+    padding: $content-p $container-p;
     flex-direction: column;
     .store-scroll {
       transform: translateX(-100px);
@@ -485,7 +474,7 @@ li,button {
 /* #### section : notice #### */
 #notice {
   background-color: $orange;
-  padding: $content-p;
+  padding: $content-p 0;
   @include flexCenter(flex-end);
   /* Notice 콘텐츠 */
   .notice-bg-inner {
@@ -505,7 +494,6 @@ li,button {
       .left {
         text-align: center;
         padding: 24px;
-        @include ellipsis;
         .btn-notice {
           display: inline-block;
           margin-top: 24px;
@@ -516,7 +504,7 @@ li,button {
           margin-top: 24px;
         }
         li {
-          width: 323px;
+          width: 100%;
           padding: 8px 0;
           display: flex;
           flex-direction: column;
@@ -548,8 +536,8 @@ li,button {
   background-image: url('../img/join-background.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  padding: $content-p;
+  background-size: cover;
+  padding: $content-p 0;
   @include flexCenter(center);
   .join-inner {
     padding: 48px 24px;
@@ -587,7 +575,7 @@ li,button {
 #footer {
   .container {
     font-size: $text-sm;
-    padding: 80px 0;
+    padding: 80px $container-p;
     @include flexCenter(space-between);
     align-items: last baseline;
     /* footer 왼쪽 */
@@ -632,20 +620,31 @@ li,button {
   }
 }
 
+
 /* #### 미디어쿼리 분기점 #### */
 
 @include tablet {
   /* #### 공통영역 #### */
+  /* 타이틀  */
   .title {
     font-size: $title-md-m;
   }
 
+  /* 로고  */
+  .logo {
+    height: auto;
+    width: 132px;
+    a img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   /* #### 헤더 영역 #### */
   #header {
-    position: relative;
+    height: auto;
     .container {
-      height: 100%;
-      /* 헤더 nav 영역 */
+      /* 헤더 nav */
       nav .nav-list {
         display: none;
       }
@@ -694,14 +693,15 @@ li,button {
       top: 0;
     }
     .mobile-menu-inner {
-      padding: $container-p;
-      /* 모바일 메뉴 상단 영역 */
+      padding: 0 $container-p;
+      /* 모바일 메뉴 상단 */
       div {
-        height: 78px;
+        height: auto;
         display: flex;
         align-items: center;
         .logo {
           margin: 0 auto;
+          height: auto;
         }
         .mobile-close-btn {
           position: relative;
@@ -726,7 +726,7 @@ li,button {
           }
         }
       }
-      /* 모바일 메뉴 리스트 영역 */
+      /* 모바일 메뉴 리스트 */
       .mobile-menu-list {
         .dropdown-toggle {
           border-bottom: 1px solid $gray;
@@ -782,68 +782,47 @@ li,button {
   /* #### section : brand #### */
   #brand {
     /* 브랜드 타이틀 세부설명 */
-    .container .brand-title {
-      div {
-        font-size: $title-sm-m;
+    .container {
+      .brand-title {
+        div {
+          font-size: $title-sm-m;
+        }
       }
     }
   }
   
+  /* #### section : menu #### */
+  #menu {
+    .container {
+      /* 메뉴 리스트 아이템 */
+      .menu-slider {
+        .swiper-wrapper {
+          transition-timing-function: linear;
+          padding-top: 10px;
+          /* 카드 아이템 */
+          .card-item a .item-desc {
+            padding: 16px 0;
+            b {
+              font-size: $text-md;
+            }
+          }
+        }
+      }
+    }
+  }
+
   /* #### section : store #### */
   #store {
     .container {
-      padding: $content-p;
-      flex-direction: column;
-      .store-scroll {
-        transform: translateX(-100px);
-        opacity: 0;
-        transition: 1s;
-        &.active {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
       .store-inner {
         margin-top: 48px;
         width: 100%;
         gap: 24px;
         display: flex;
         /* 검색 버튼 */
-        .search {
-          width: 50%;
-          @include flexCenter(center);
-          form {
-            position: relative;
-            input[type=search] {
-              width: 326px;
-              height: 44px;
-              padding: 0 100px 0 40px;
-              border: none;
-              border-bottom: 1px solid $black;
-              background-image: url('../img/icon-map.png');
-              background-position: left 8px center;
-              background-repeat: no-repeat;
-              background-size: 24px 24px;
-              -webkit-appearance: textfield; /* 기본(네이티브) 모양을 제거 */
-              &::-webkit-search-cancel-button,
-              &::-webkit-search-results-button {
-                display: none; /* x 버튼 숨기기 */
-              }
-              &:focus {
-                outline: none;
-              }
-            }
-            .btn-search {
-              position: absolute;
-              bottom: 8px;
-              right: 8px;
-              border: 1px solid $black;
-              border-radius: 20px;
-              padding: 4px 8px;
-              background-color: transparent;
-              font-size: $text-sm;
-              cursor: pointer;
-            }
+        .search form {
+          input[type=search] {
+            width: 100%;
           }
         }
         /* 구글 맵 */
@@ -857,6 +836,358 @@ li,button {
     }
   }
 
+  /* #### section : notice #### */
+  #notice {
+    @include flexCenter(center);
+    /* Notice 콘텐츠 */
+    .notice-bg-inner {
+      background-color: $white;
+      width: 100%;
+      padding: 120px 24px;
+      right: 0;
+      transition: 1s;
+      box-sizing: border-box;
+      .contents {
+        @include flexCenter(center);
+        width: 100%;
+        gap: 48px;
+        .left {
+          padding: 24px 0;
+        }
+      }
+    }
+  }
+
+  /* #### section : join #### */
+  #join {
+    .join-inner {
+      padding: 48px 24px;
+      gap: 48px;
+      text-align: center;
+      div:nth-child(1) {
+        font-size: $title-lg-m;
+      }
+      div:nth-child(2) {
+        font-size: $title-sm-m;
+      }
+    }
+  }
+
+  /* #### Footer #### */
+  #footer {
+    .container {
+      /* footer 오른쪽 */
+      .right .sns-icon {
+        gap: 24px;
+        a {
+          width: 36px;
+        }
+      }
+    }
+  }
+}
+
+
+/* #### 모바일 분기점 #### */
+@include mobile {
+  /* #### 공통영역 #### */
+  /* 로고  */
+  .logo {
+    height: auto;
+    width: 120px;
+  }
+
+  .container {
+    padding: $container-p-m;
+  }
+
+  /* #### 헤더 영역 #### */
+  #header {
+    height: auto;
+    .container {
+      padding: 0 $container-p;
+      /* 헤더 nav */
+      nav .nav-list {
+        display: none;
+      }
+      .language-inner {
+        display: none;
+      }
+      .mobile-open-btn {
+        display: block;
+        position: relative;
+        width: 24px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        span {
+          width: 100%;
+          height: 2px;
+          background-color: $black;
+          position: absolute;
+          top: 0;
+          left: 0;
+          &:nth-child(2) {
+            top: 50%;
+            left: 0;
+          }
+          &:nth-child(3) {
+            top: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: $white;
+    top: -100%;
+    transition: 0.5s;
+    &.active {
+      top: 0;
+    }
+    .mobile-menu-inner {
+      padding: 0 $container-p;
+      /* 모바일 메뉴 상단 */
+      div {
+        height: auto;
+        display: flex;
+        align-items: center;
+        .logo {
+          margin: 0 auto;
+          height: auto;
+        }
+        .mobile-close-btn {
+          position: relative;
+          width: 24px;
+          height: 20px;
+          cursor: pointer;
+          span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: $black;
+            &:nth-child(1) {
+              top: 50%;
+              left: 0;
+              transform: rotate(45deg);
+            }
+            &:nth-child(2) {
+              top: 50%;
+              left: 0;
+              transform: rotate(-45deg);
+            }
+          }
+        }
+      }
+      /* 모바일 메뉴 리스트 */
+      .mobile-menu-list {
+        .dropdown-toggle {
+          border-bottom: 1px solid $gray;
+          & > a {
+            width: 100%;
+            padding: 24px 0;
+            display: block;
+            position: relative;
+            font-weight: $semibold;
+            &:after {
+              content: '';
+              position: absolute;
+              width: 24px;
+              height: 24px;
+              background-image: url(../img/arrow-row.png);
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: 100%;
+              right: 0;
+              transition: 0.3s;
+            }
+            &.active:after {
+              transform: rotate(180deg);
+            }
+          }
+          .mobile-menu-sub {
+            display: none;
+            li a {
+              padding: 16px 0;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* #### section : brand #### */
+  #brand {
+    /* 브랜드 타이틀 세부설명 */
+    .container {
+      padding: $content-p $container-p-m;
+    }
+  }
+
+  /* #### section : menu #### */
+  #menu {
+    .container {
+      /* 메뉴 리스트 */
+      .menu-list ul {
+        gap: 16px;
+        display: grid;
+        grid-template-columns: repeat(3 , 1fr);
+        .list-title {
+          padding: $li-p-m;
+          @include ellipsis;
+          &.active a {
+            color: $orange;
+            font-weight: $semibold;
+          }
+        }
+      }
+      /* 메뉴 리스트 아이템 */
+      .menu-slider {
+        width: calc(100% - 32px);
+        height: auto;
+        .swiper-wrapper {
+          transition-timing-function: linear;
+          padding-top: 10px;
+          /* 카드 아이템 */
+          .card-item a .item-desc {
+            b {
+              @include ellipsis;
+            }
+          }
+        }
+        /* 슬라이드 버튼 커스텀 */
+        .swiper-btn-next {
+          width: 24px;
+          height: 24px;
+          right: -40px;
+        }
+        .swiper-btn-prev {
+          width: 24px;
+          height: 24px;
+          left: -40px;
+        }
+      }
+    }
+  }
+
+  /* #### section : store #### */
+  #store {
+    .container {
+      .store-inner {
+        gap: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* 검색 버튼 */
+        .search {
+          width: 100%;
+          form input[type=search] {
+            width: 100%;
+          }
+        }
+        /* 구글 맵 */
+        .google-map {
+          width: 100%;
+          iframe {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  /* #### section : notice #### */
+  #notice {
+    @include flexCenter(center);
+    padding: $content-p 0;
+    /* Notice 콘텐츠 */
+    .notice-bg-inner {
+      background-color: $white;
+      width: 100%;
+      padding: $container-p-m;
+      right: 0;
+      left: 0;
+      transition: 1s;
+      .contents {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 45px;
+        padding: 48px 0;
+        .left {
+          padding: 0;
+        }
+        .right {
+          width: 100%;
+          padding-bottom: 24px;
+        }
+      }
+    }
+  }
+
+  /* #### section : join #### */
+  #join {
+    padding: $content-p 0;
+    @include flexCenter(center);
+    width: 100%;
+    .join-inner {
+      padding: 48px 16px;
+      gap: 48px;
+      text-align: center;
+      div:nth-child(1) {
+        font-size: $title-lg-m;
+      }
+      div:nth-child(2) {
+        font-size: $title-sm-m;
+      }
+    }
+  }
+  /* #### Footer #### */
+  #footer {
+    .container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      padding: 80px $container-p-m;
+      .left {
+        text-align: center;
+        .logo {
+          margin: 0 auto;
+          margin-bottom: 48px;
+        }
+      }
+      /* footer 오른쪽 */
+      .right {
+        text-align: center;
+        .sns-icon {
+          justify-content: center;
+          gap: 16px;
+          a {
+            width: 24px;
+          }
+        }
+        .user-info {
+          justify-content: center;
+          li {
+            padding: $li-p-m;
+          }
+        }
+      }
+    }
+  }
 }
 
 
