@@ -2,7 +2,7 @@ console.log(['slider.js'].load);
 
 const visualSlider = new Swiper('.visual-slider.swiper', {
   autoplay: {
-    delay: 5000,
+    delay: 6000,
     disableOnInteraction: false // 사용자 상호 작용 후에도 자동 재생 유지
   },
   slidesPerView : '1', // 한 슬라이드에 보여줄 갯수
@@ -12,7 +12,7 @@ const visualSlider = new Swiper('.visual-slider.swiper', {
   mouseWheel: true,
   keyboard: true,
   effect: 'fade', // 페이드 인/아웃 효과
-  speed: 1200,
+  speed: 1500,
   loop : true,   // 슬라이드 반복 여부
   watchOverflow: true,// 슬라이드가 화면을 넘어갈 때의 처리 설정
   fadeEffect: { crossFade: true },

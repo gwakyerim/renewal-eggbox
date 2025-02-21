@@ -768,13 +768,13 @@ li,button {
   /* #### section : visual #### */
   #visual {
     .visual-slider .swiper-wrapper .swiper-slide {
-      p {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      img {
         width: 100%;
-        text-align: center;
-        font-size: $title-lg-m;
-        span {
-          font-size: $title-sm-m;
-        }
+        height: 100%;
+        object-fit: fill;
       }
     }
   }
@@ -1093,6 +1093,7 @@ li,button {
           width: 100%;
           form input[type=search] {
             width: 100%;
+            background-color: transparent;
           }
         }
         /* 구글 맵 */

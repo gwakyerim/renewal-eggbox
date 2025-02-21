@@ -857,13 +857,16 @@ li, button {
   }
   /* #### 메인 영역 #### */
   /* #### section : visual #### */
-  #visual .visual-slider .swiper-wrapper .swiper-slide p {
+  #visual .visual-slider .swiper-wrapper .swiper-slide {
+    position: relative;
     width: 100%;
-    text-align: center;
-    font-size: 30px;
+    height: 100%;
   }
-  #visual .visual-slider .swiper-wrapper .swiper-slide p span {
-    font-size: 20px;
+  #visual .visual-slider .swiper-wrapper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: fill;
+       object-fit: fill;
   }
   /* #### section : brand #### */
   #brand {
@@ -1152,6 +1155,7 @@ li, button {
   }
   #store .container .store-inner .search form input[type=search] {
     width: 100%;
+    background-color: transparent;
   }
   #store .container .store-inner .google-map {
     width: 100%;
