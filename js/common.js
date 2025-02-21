@@ -1,5 +1,13 @@
 console.log(['common.js'].load);
 
+/* 모바일 100vh 스크롤 문제 해결 */
+function setScreenSize() {
+  let vh = window.innerHeight * 0.01;
+
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+setScreenSize();
 
 /* Header 언어선택 메뉴 구현하기 */
 const lang = document.querySelector('.lang');

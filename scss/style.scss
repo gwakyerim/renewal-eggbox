@@ -767,6 +767,7 @@ li,button {
   /* #### 메인 영역 #### */
   /* #### section : visual #### */
   #visual {
+    height: calc(var(--vh, 1vh) * 100);
     .visual-slider .swiper-wrapper .swiper-slide {
       position: relative;
       width: 100%;
